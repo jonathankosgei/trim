@@ -1,5 +1,6 @@
 """
-    Trim takes a file and removes the first `x` characters and writes it to stdout.   
+    Trim takes a file and removes the first `x` characters on each line
+    and writes the output to a file or to stdout.   
 """
 import sys
 import os
@@ -49,10 +50,10 @@ if __name__ == "__main__":
     if len(sys.argv) < 3:
         print(usage)
         sys.exit(1)
-    trim_length, file_name = sys.argv[1:]
+    trim_length, file_name = sys.argv[1:3]
     out_file = None
-    if len(sys.argv) > 4:
-        outfile = sys.argv[3]
+    if len(sys.argv) >= 4:
+        out_file = sys.argv[3]
     
     # instantiate trimmer and trim
     trimmer = Trim(trim_length=trim_length, file_name=file_name, output_name=out_file)
@@ -61,6 +62,4 @@ if __name__ == "__main__":
         sys.exit(13)
     else:
         sys.exit(0)
-
-    print(args)
 
